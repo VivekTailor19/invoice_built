@@ -10,6 +10,11 @@ class Invoice_Datas extends StatefulWidget {
 class _Invoice_DatasState extends State<Invoice_Datas> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return SafeArea(
+      child: Scaffold(
+
+
+      ),
+    );
   }
 }

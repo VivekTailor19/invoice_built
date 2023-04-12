@@ -13,7 +13,7 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
 
-    Future.delayed(Duration(seconds: 2),() {
+    Future.delayed(Duration(seconds: 3),() {
       Navigator.pushReplacementNamed(context, "data");
     },);
 
