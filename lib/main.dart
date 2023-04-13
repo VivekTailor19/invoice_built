@@ -39,14 +39,14 @@ Datas ---
 Invoice--
 Date,Invoice number
 
-Invoice From--
+Invoice From--                                     ✔
 Name,Address,Phone,Email
 
-Invoice To---
+Invoice To---                                     ✔
 Name,Address,Phone,Email
 
-Items
-Name, Description, Price, Quantity, Total Price
+Items                                     ✔
+Name, Description, Price, Quantity, Total Price, listVIEW
 
 Invoice-
 Total, Tax, Final Amount,
