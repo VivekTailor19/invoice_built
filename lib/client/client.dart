@@ -14,6 +14,7 @@ class Clients extends StatefulWidget {
 
 class _ClientsState extends State<Clients> {
 
+  TextEditingController cid = TextEditingController();
   TextEditingController cname = TextEditingController();
   TextEditingController caddress = TextEditingController();
   TextEditingController cphone = TextEditingController();
@@ -32,6 +33,7 @@ class _ClientsState extends State<Clients> {
             SizedBox(height: 15),
 
 
+            Info(hint: "Enter Client Unique Id....",kboard: TextInputType.number,controller: cid),
             Info(hint: "Enter Client Name....",kboard: TextInputType.text,controller: cname),
             Info(hint: "Enter Proper Address....",kboard: TextInputType.text,controller: caddress),
             Info(hint: "Enter 10 digit contact number....",kboard: TextInputType.text,controller: cphone),
@@ -41,7 +43,7 @@ class _ClientsState extends State<Clients> {
             ElevatedButton(onPressed: () {
 
 
-              cd = Client_Data(cname: cname.text,caddress: caddress.text,cemail: cemail.text,cphone: cphone.text);
+              cd = Client_Data(cid: cid.text,cname: cname.text,caddress: caddress.text,cemail: cemail.text,cphone: cphone.text);
 
               ScaffoldMessenger.of(context)!.showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text("Your Information is Collected"),backgroundColor: Colors.green.shade400,));
 
