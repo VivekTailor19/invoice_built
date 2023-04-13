@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../homescreen.dart';
+import 'client_modal.dart';
+
+Client_Data cd = Client_Data();
+
 class Clients extends StatefulWidget {
   const Clients({Key? key}) : super(key: key);
 
@@ -8,12 +13,46 @@ class Clients extends StatefulWidget {
 }
 
 class _ClientsState extends State<Clients> {
+
+  TextEditingController cname = TextEditingController();
+  TextEditingController caddress = TextEditingController();
+  TextEditingController cphone = TextEditingController();
+  TextEditingController cemail = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(backgroundColor: Colors.blueGrey.shade500,
         title: Text("Client Info",style: TextStyle(fontSize: 30,color: Colors.white)),),
 
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 15),
+
+
+            Info(hint: "Enter Client Name....",kboard: TextInputType.text,controller: cname),
+            Info(hint: "Enter Proper Address....",kboard: TextInputType.text,controller: caddress),
+            Info(hint: "Enter 10 digit contact number....",kboard: TextInputType.text,controller: cphone),
+            Info(hint: "Enter proper email id....",kboard: TextInputType.text,controller: cemail),
+
+            SizedBox(height: 15),
+            ElevatedButton(onPressed: () {
+
+
+              cd = Client_Data(cname: cname.text,caddress: caddress.text,cemail: cemail.text,cphone: cphone.text);
+
+              ScaffoldMessenger.of(context)!.showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text("Your Information is Collected"),backgroundColor: Colors.green.shade400,));
+
+            },child: Text("Create"),),
+
+          ],
+        ),
+      ),
+
     );
   }
+
+
 }

@@ -5,6 +5,34 @@ import 'package:invoice_built/invoice/invoice_view.dart';
 
 import 'items/additem.dart';
 
+
+Widget Info({TextInputType? kboard,TextEditingController? controller, String? hint})
+{
+  return Padding(
+    padding: const EdgeInsets.all(10),
+    child: TextFormField(
+      controller: controller,
+      keyboardType: kboard,
+      style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
+      scrollPhysics: BouncingScrollPhysics(),
+      decoration: InputDecoration(
+        hintText: "$hint",
+        hintStyle: TextStyle(fontSize: 20,color: Colors.blueGrey.shade100,wordSpacing: 3),
+        filled: true,
+        fillColor: Colors.white,
+        enabled: true,
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade200)),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade700)),
+
+
+
+
+      ),
+    ),
+  );
+}
+
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 

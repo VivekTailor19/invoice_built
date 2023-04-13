@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_built/business/business_modal.dart';
+
+import '../homescreen.dart';
+
+Business_Data bd = Business_Data();
+
 
 class Business extends StatefulWidget {
   const Business({Key? key}) : super(key: key);
@@ -34,7 +40,10 @@ class _BusinessState extends State<Business> {
             Info(hint: "Enter website....",kboard: TextInputType.text,controller: bwebsite),
             SizedBox(height: 15),
             ElevatedButton(onPressed: () {
-              
+
+
+              bd = Business_Data(bname: bname.text,baddress: baddress.text,bemail: bemail.text,bphone: bphone.text,bwebsite: bwebsite.text);
+
               ScaffoldMessenger.of(context)!.showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text("Your Information is Collected"),backgroundColor: Colors.green.shade400,));
 
             },child: Text("Create"),),
@@ -46,31 +55,7 @@ class _BusinessState extends State<Business> {
     );
   }
 
-  Widget Info({TextInputType? kboard,TextEditingController? controller, String? hint})
-  {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: TextFormField(
-        controller: controller,
-        keyboardType: kboard,
-        style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
-        scrollPhysics: BouncingScrollPhysics(),
-        decoration: InputDecoration(
-          hintText: "$hint",
-          hintStyle: TextStyle(fontSize: 20,color: Colors.blueGrey.shade100,wordSpacing: 3),
-          filled: true,
-          fillColor: Colors.white,
-          enabled: true,
-          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade200)),
-          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade700)),
 
-
-
-
-        ),
-      ),
-    );
-  }
 
 }
 //   Invoice From--
