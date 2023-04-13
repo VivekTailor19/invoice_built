@@ -14,7 +14,7 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
 
     Future.delayed(Duration(seconds: 3),() {
-      Navigator.pushReplacementNamed(context, "data");
+      Navigator.pushReplacementNamed(context, "home");
     },);
 
     return SafeArea(
@@ -24,7 +24,7 @@ class _SplashState extends State<Splash> {
             children: [
               SizedBox(height: 150),
               Image.asset("assets/images/invoice (2).png",height: 200,width: 200,fit: BoxFit.fill,),
-              SizedBox(height: 40),
+              SizedBox(height: 55),
               LinearProgressIndicator(color: Color(0xffB6C9FD),backgroundColor: Color(0xffE5EDFC),)
             ],
           ),

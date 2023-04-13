@@ -10,6 +10,9 @@ class Invoice_View extends StatefulWidget {
 class _Invoice_ViewState extends State<Invoice_View> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.blueGrey.shade500,
+        title: Text("Invoice",style: TextStyle(fontSize: 30,color: Colors.white)),),
+    );
   }
 }

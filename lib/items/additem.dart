@@ -11,7 +11,8 @@ class _AddItemsState extends State<AddItems> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(backgroundColor: Colors.blueGrey.shade500,
+        title: Text("Products",style: TextStyle(fontSize: 30,color: Colors.white)),),
     );
   }
 }
