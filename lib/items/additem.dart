@@ -169,6 +169,7 @@ class _AddItemsState extends State<AddItems> {
                     children: [
                       Text("Total",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
                       Text("${im.itotal}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
+
                     ],
                   ),
 
