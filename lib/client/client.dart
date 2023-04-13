@@ -32,7 +32,6 @@ class _ClientsState extends State<Clients> {
           children: [
             SizedBox(height: 15),
 
-
             Info(hint: "Enter Client Unique Id....",kboard: TextInputType.number,controller: cid),
             Info(hint: "Enter Client Name....",kboard: TextInputType.text,controller: cname),
             Info(hint: "Enter Proper Address....",kboard: TextInputType.text,controller: caddress),
