@@ -32,10 +32,14 @@ class _AddItemsState extends State<AddItems> {
           Info(hint: "Product Description....",kboard: TextInputType.text,controller: iname),
           Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-            Container(width: 150,child: Info(hint: "Price....",kboard: TextInputType.text,controller: iname)),
-            Container(width: 150,child: Info(hint: "Quantity....",kboard: TextInputType.text,controller: iname))
+            Container(width: 150,child: Info(hint: "Price....",kboard: TextInputType.number,controller: iname)),
+            Container(width: 150,child: Info(hint: "Quantity....",kboard: TextInputType.number,controller: iname))
           ],),
-          Container(width: 150,child: Text("Hello World")),
+          Container(width: 180,height: 75,alignment: Alignment.center,
+              child:Text("Total Pay",style:TextStyle(color: Colors.blueGrey.shade800,fontSize: 20)),
+              decoration: BoxDecoration(
+              border: Border.all(color: Colors.indigo.shade700),
+              borderRadius: BorderRadius.all(Radius.circular(20)),)),
 
 
         ],

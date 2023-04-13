@@ -25,8 +25,6 @@ Widget Info({TextInputType? kboard,TextEditingController? controller, String? hi
         focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade700)),
 
 
-
-
       ),
     ),
   );
