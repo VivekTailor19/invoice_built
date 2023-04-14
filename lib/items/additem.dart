@@ -33,31 +33,46 @@ class _AddItemsState extends State<AddItems> {
         title: Text("Products",style: TextStyle(fontSize: 30,color: Colors.white)),),
 
       body:  Center(
-        child: Column(
-          children: [
-            SizedBox(height: 15),
-            ElevatedButton(onPressed: () {
-              alertAddProduct();
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 15),
+              ElevatedButton(onPressed: () {
+                alertAddProduct();
 
-            },child: Text("Add"),),
-            SizedBox(height: 15),
-            Expanded(
-              child: ListView.builder(
-                scrollDirection: Axis.vertical,
-                itemCount: products.length,
-                itemBuilder: (context, index) {
-                return Items(products[index],index);
-              },
+              },child: Text("Add"),),
+              SizedBox(height: 15),
+
+              // Expanded(
+              //   child: ListView.builder(
+              //     scrollDirection: Axis.vertical,
+              //     itemCount: products.length,
+              //     itemBuilder: (context, index) {
+              //     return Items(products[index],index);
+              //   },
+              //   ),
+              // ),
+              SizedBox(height: 15),
+              SizedBox(height: 15),
+              Expanded(
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: products.length,
+                  itemBuilder: (context, index) {
+                    return Item_Tile(products[index],index);
+                  },
+                ),
               ),
-            )
-          ],
+
+            ],
+          ),
         ),
       ),
 
     );
   }
 
-  Future<void> alertAddProduct()
+  Future<void> alertAddProduct()        // alert dialog
   async {
    await showDialog(context: context, builder: (context) {
       return AlertDialog(
@@ -220,6 +235,56 @@ class _AddItemsState extends State<AddItems> {
             ),
               ),),
           );
+  }
+
+  Widget Item_Tile(Items_Modal im,int index)
+  {
+    return Padding(
+      padding: EdgeInsets.only(top: 8.0,left: 10,right: 10),
+      child: Container(height: 75,width:double.infinity,
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.indigo.shade700),
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        child: ExpansionTile(
+          leading: Text("${im.iid}",style: TextStyle(fontSize: 17,color: Color(0xff4474fa)),),
+          title: Row(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text("${im.iname}",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+                  Text("${im.idata}",style: TextStyle(fontSize: 13,color: Color(0xffB6C9FD)),),
+                ],
+              ),
+              //SizedBox(width: 10),
+              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text("Price",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+                  Text("${im.iprice}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
+                ],
+              ),
+              //SizedBox(width: 10),
+              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text("Qty",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+                  Text("${im.iqty}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
+                ],
+              ),
+             //SizedBox(width: 10),
+              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text("Total",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+                  Text("${im.itotal}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
+                ],
+              ),
+            ],
+          ),
+          trailing: Icon(Icons.more_vert_rounded),
+
+
+
+        ),),
+    );
   }
 }
 
