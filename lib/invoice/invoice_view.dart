@@ -78,13 +78,15 @@ class _Invoice_ViewState extends State<Invoice_View> {
                     ),
                   ),
                 Bill_Items(Colors.white70),
+                Bill_Items(Colors.white70),
+
                 Bill_Items(Colors.white60),
                 Row(
                   mainAxisAlignment:MainAxisAlignment.spaceBetween,
                   children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
-                    child: Container(height: 100,width: 150,
+                    child: Container(height: 80,width: 155,
                       decoration: BoxDecoration(color: green,borderRadius: BorderRadius.circular(10)),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -105,7 +107,7 @@ class _Invoice_ViewState extends State<Invoice_View> {
 
                                 ]),),
 
-                            SizedBox(width: 15),
+                            SizedBox(width: 5),
 
                             Container(child: Column(crossAxisAlignment:CrossAxisAlignment.start,
                                 children: [
@@ -163,7 +165,38 @@ class _Invoice_ViewState extends State<Invoice_View> {
                           ),)
 
                   ],),)
-                ],)
+                ],),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(width: 180,
+
+                      child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Terms & Condition:",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11,color: green),),
+                          SizedBox(height: 8),
+                          Text("Use of simple, polite, and straightforward language. Mentioning the complete details of the firm and the client. Complete details of the product or service, including taxes or discounts.",style: TextStyle(fontSize: 9,color: Colors.black45),textAlign: TextAlign.justify,)
+
+
+                        ],
+                      ),
+                    ),
+                    Container(width: 150,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(height: 40,width: 130,child: Image.asset("assets/images/radiation.png"),),
+                        Divider(color: Colors.black26),
+                        Text("Your Name & Signature",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 11),),
+                        Text("Account Manager",style: TextStyle(fontSize: 9),)
+                        
+                      ],
+                    ),),
+
+                ],),
+                SizedBox(height: 15),
+                  Text("😃 Thank You For Shopping 😃\n😎...ફરી મુલાકાત લેશોજી....😎",style: TextStyle(fontSize: 12,fontWeight: FontWeight.bold),)
+
 
 
               ],),
