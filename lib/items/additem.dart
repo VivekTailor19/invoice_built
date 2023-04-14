@@ -16,7 +16,7 @@ class _AddItemsState extends State<AddItems> {
   TextEditingController pname = TextEditingController();
   TextEditingController pdata = TextEditingController();
   TextEditingController pprice = TextEditingController();
-  TextEditingController pqty = TextEditingController();
+  TextEditingController pqty = TextEditingController(text: '1');
   String  total =  "";
   String price = "0";
   String qty = "1";
@@ -38,6 +38,7 @@ class _AddItemsState extends State<AddItems> {
             SizedBox(height: 15),
             ElevatedButton(onPressed: () {
               alertAddProduct();
+
             },child: Text("Add"),),
             SizedBox(height: 15),
             Expanded(
@@ -56,112 +57,118 @@ class _AddItemsState extends State<AddItems> {
     );
   }
 
-  void alertAddProduct()
-  {
-    showDialog(context: context, builder: (context) {
+  Future<void> alertAddProduct()
+  async {
+   await showDialog(context: context, builder: (context) {
       return AlertDialog(
         title: Text("Add Product"),
-        content: SingleChildScrollView(
-          child: Column(mainAxisSize: MainAxisSize.min,
-          children: [
-              Info(hint: "Product Id....",kboard: TextInputType.text,controller: pid),
-              Info(hint: "Product Name....",kboard: TextInputType.text,controller: pname),
-              Info(hint: "Description....",kboard: TextInputType.text,controller: pdata),
-                Padding(
-                padding: const EdgeInsets.all(10),
-                child: TextFormField(
-                  onChanged: (value) {
-                  if(mounted)
-                    {
+        content: StatefulBuilder(   // Dialog ma data refresh kari live update jova
+          builder: (context, setState) => SingleChildScrollView(
+            child: Column(mainAxisSize: MainAxisSize.min,
+            children: [
+                Info(hint: "Product Id....",kboard: TextInputType.text,controller: pid),
+                Info(hint: "Product Name....",kboard: TextInputType.text,controller: pname),
+                Info(hint: "Description....",kboard: TextInputType.text,controller: pdata),
+                  Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: TextFormField(
+                    onChanged: (value) {
+                    if(mounted)
+                      {
+                        setState(() {
+                          price = value;
+                          //total = '${int.parse(qty)*int.parse(price)}';
+                        });
+                      }
+                    },
+                    controller: pprice,
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
+                    scrollPhysics: BouncingScrollPhysics(),
+                    decoration: InputDecoration(
+                      hintText: "Price.....",
+                      hintStyle: TextStyle(fontSize: 20,color: Colors.blueGrey.shade100,wordSpacing: 3),
+                      filled: true,
+                      fillColor: Colors.white,
+                      enabled: true,
+                      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade200)),
+                      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade700)),
+
+
+                    ),
+                  ),
+                ),
+                  Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: TextFormField(
+                    onChanged: (value) {
                       setState(() {
-                        price = value;
-                        //total = '${int.parse(qty)*int.parse(price)}';
+                        qty = value;
+                        total = '${int.parse(qty)*int.parse(price)}';
+
                       });
-                    }
-                  },
-                  controller: pprice,
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
-                  scrollPhysics: BouncingScrollPhysics(),
-                  decoration: InputDecoration(
-                    hintText: "Price.....",
-                    hintStyle: TextStyle(fontSize: 20,color: Colors.blueGrey.shade100,wordSpacing: 3),
-                    filled: true,
-                    fillColor: Colors.white,
-                    enabled: true,
-                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade200)),
-                    focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade700)),
+                    },
+                    controller: pqty,
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
+                    scrollPhysics: BouncingScrollPhysics(),
+                    decoration: InputDecoration(
+                      hintText: "QTY.....",
+                      hintStyle: TextStyle(fontSize: 20,color: Colors.blueGrey.shade100,wordSpacing: 3),
+                      filled: true,
+                      fillColor: Colors.white,
+                      enabled: true,
+                      enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade200)),
+                      focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade700)),
 
 
+                    ),
                   ),
                 ),
-              ),
-                Padding(
-                padding: const EdgeInsets.all(10),
-                child: TextFormField(
-                  onChanged: (value) {
-                    setState(() {
-                      qty = value;
-                      total = '${int.parse(qty)*int.parse(price)}';
+                // Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //   children: [
+                //     Container(width: 115,child: Info(hint: "Price...",kboard: TextInputType.number,controller: pprice)),
+                //     Container(width: 115,child: Info(hint: "Qty...",kboard: TextInputType.number,controller: pqty))
+                //   ],),
+                Text("$total",style: TextStyle(color: Colors.red,fontSize: 20),),
 
-                    });
-                  },
-                  controller: pqty,
-                  keyboardType: TextInputType.number,
-                  style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
-                  scrollPhysics: BouncingScrollPhysics(),
-                  decoration: InputDecoration(
-                    hintText: "QTY.....",
-                    hintStyle: TextStyle(fontSize: 20,color: Colors.blueGrey.shade100,wordSpacing: 3),
-                    filled: true,
-                    fillColor: Colors.white,
-                    enabled: true,
-                    enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade200)),
-                    focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade700)),
+                SizedBox(height: 15),
+
+                ElevatedButton(onPressed: () {
 
 
-                  ),
-                ),
-              ),
-              // Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: [
-              //     Container(width: 115,child: Info(hint: "Price...",kboard: TextInputType.number,controller: pprice)),
-              //     Container(width: 115,child: Info(hint: "Qty...",kboard: TextInputType.number,controller: pqty))
-              //   ],),
-              Text("$total",style: TextStyle(color: Colors.red,fontSize: 20),),
+                  setState(() {
+                    Items_Modal item = Items_Modal(iid: pid.text,iname: pname.text,idata: pdata.text,iprice: pprice.text,iqty: pqty.text,itotal: total);
+                    products.add(item);
+                    pid.text = '';
+                    pname.text = '';
+                    pdata.text= '';
+                    pprice.text = '';
+                    pqty.text = '';
+                    total = '';
 
-              SizedBox(height: 15),
-
-              ElevatedButton(onPressed: () {
+                  });
 
 
-                setState(() {
-                  Items_Modal item = Items_Modal(iid: pid.text,iname: pname.text,idata: pdata.text,iprice: pprice.text,iqty: pqty.text,itotal: total);
-                  products.add(item);
-                  pid.text = '';
-                  pname.text = '';
-                  pdata.text= '';
-                  pprice.text = '';
-                  pqty.text = '';
-                  total = '';
+                  Navigator.pop(context);
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text("Thanks for Adding Product in List"),backgroundColor: Colors.green.shade400,));
 
-                });
-
-
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text("Thanks for Adding Product in List"),backgroundColor: Colors.green.shade400,));
-
-              },child: Text("Add"),),
-              SizedBox(height: 15),
+                },child: Text("Add"),),
+                SizedBox(height: 15),
 
 
 
 
-            ],
+              ],
+            ),
           ),
         ),
       );
     },);
+    setState(() {
+
+    });
+
   }
 
   Widget Items(Items_Modal im,int index)
@@ -204,7 +211,6 @@ class _AddItemsState extends State<AddItems> {
                     children: [
                       Text("Total",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
                       Text("${im.itotal}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
-
                     ],
                   ),
 

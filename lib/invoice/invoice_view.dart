@@ -85,7 +85,44 @@ class _Invoice_ViewState extends State<Invoice_View> {
                   Padding(
                     padding: const EdgeInsets.only(top: 20.0),
                     child: Container(height: 100,width: 150,
-                      decoration: BoxDecoration(color: green,borderRadius: BorderRadius.circular(10)),),
+                      decoration: BoxDecoration(color: green,borderRadius: BorderRadius.circular(10)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                        Text("Payment Method",style: TextStyle(color: Colors.white,fontSize: 11,fontWeight: FontWeight.bold),),
+                        SizedBox(height: 10),
+
+                        Row(
+                          children: [
+                            Container(child: Column(crossAxisAlignment:CrossAxisAlignment.start,
+                                children: [
+
+                                  Text("Account No:",style: TextStyle(color: Colors.white,fontSize: 9),),
+                                  Text("Account Name:",style: TextStyle(color: Colors.white,fontSize: 9),),
+                                  Text("Branch Name",style: TextStyle(color: Colors.white,fontSize: 9),),
+
+                                ]),),
+
+                            SizedBox(width: 15),
+
+                            Container(child: Column(crossAxisAlignment:CrossAxisAlignment.start,
+                                children: [
+                                  Text("1234 5678 9109",style: TextStyle(color: Colors.white,fontSize: 9),),
+                                  Text("Jhone Doe.",style: TextStyle(color: Colors.white,fontSize: 9),),
+                                  Text("XYZ",style: TextStyle(color: Colors.white,fontSize: 9),),
+
+
+
+                                ]),),
+
+                          ],
+                        ),
+
+
+                      ],),
+                    ),),
                   ),
                   Container(height:135,width:120,
                     child: Column(

@@ -56,4 +56,8 @@ Signature Company Logo
 Payment Method-
 AccountNumber, AccountName, Branch Name
 
+
+
+alert add item ma totol amount delete nai thatu......
+
 * */
