@@ -8,7 +8,7 @@ class Invoice_View extends StatefulWidget {
 }
 
 class _Invoice_ViewState extends State<Invoice_View> {
-  Color green = Colors.green;
+  Color green = Colors.lightGreen;
   Color c2 = Color(0xff292931);
 
   @override
@@ -23,22 +23,75 @@ class _Invoice_ViewState extends State<Invoice_View> {
         child: Column(
           children: [
             SizedBox(height: 15),
+           // Divider(color: Colors.amber,thickness: 5,),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // crossAxisAlignment: CrossAxisAlignment.end,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Stack(
+                  alignment: Alignment(-1, -1),
+                  children: [
+                    Container(
+                      width: 360,
+                      height: 100,
+                      color: c2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Container(width:150,alignment:Alignment.center,child: Text("INVOICE",style: TextStyle(fontSize: 35,color: Colors.white,fontWeight: FontWeight.bold),)),
+                            Container(width: 150,
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text("Invoice Number:",style: TextStyle(fontSize: 8,color: Colors.white),),
+                                      Text("Invoice Date:",style: TextStyle(fontSize: 8,color: Colors.white),),
+                                      Text("Phone Number:",style: TextStyle(fontSize: 8,color: Colors.white),),
+                                      Text("Email ID:",style: TextStyle(fontSize: 8,color: Colors.white),),
 
-                Container(
-                    width: 180,
-                    height: 100,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.only(topRight: Radius.circular(10),bottomRight: Radius.circular(25)),color: green),
+
+                                  ],),
+                                  Column(crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text("0123456",style: TextStyle(fontSize: 8,color: Colors.white),),
+                                      Text("April 05, 2092",style: TextStyle(fontSize: 8,color: Colors.white),),
+                                      Text("+91 99887798555",style: TextStyle(fontSize: 8,color: Colors.white),),
+                                      Text("sample@gmail.com",style: TextStyle(fontSize: 8,color: Colors.white),),
+
+
+                                  ],),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
-                  child: Container(width: 140, height: 100, color: c2),
+                    Container(width: 200, height: 120,
+                      alignment: Alignment.centerLeft,
+
+                      decoration: BoxDecoration(
+                      color: green,
+                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(110))),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 40.0),
+                        child: Container(height: 80,width: 80,
+                          alignment: Alignment.center,
+                            child: Image.asset("assets/images/checklist.png",fit: BoxFit.fill,)),
+                      ),
+                    ),
+
+                  ],
                 ),
+                // Container(width: 150, height: 30, color: green),
+                // Container(width: 200, height: 50,
+                //   decoration: BoxDecoration(color: c2,
+                //       borderRadius: BorderRadius.only(topLeft:Radius.circular(90))),),
               ],
             ),
+            //Divider(color: Colors.amber,thickness: 5,),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
