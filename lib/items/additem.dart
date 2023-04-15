@@ -41,14 +41,14 @@ class _AddItemsState extends State<AddItems> {
           backgroundColor: Color(0xff82a2fa),
           onPressed: () {
 
-            int sum = 0;
-            int tax = 0;
-            for(int i = 0;  i < products.length; i++) {
+          //  int sum =0;
+          //  int tax = 0;
+            //for(int i = 0;  i < products.length; i++) {
              //sum = sum + int.parse(products[i].itotal);
              //int.parse(products[i].itotal);
-             print(products[i].itotal);
-              // sum = sum + int.parse( products[i].itotal );
-            }
+            // print(products[i].itotal);
+             // sum = sum + int.parse( products[i].itotal );
+           // }
 
             Navigator.pushNamed(context, "invoice");
             print(products.length);
