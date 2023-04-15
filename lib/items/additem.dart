@@ -3,6 +3,14 @@ import 'package:invoice_built/homescreen.dart';
 
 import 'item_modal.dart';
 
+
+List<Items_Modal> products = [
+  Items_Modal(iid: '101',iname: 'Happiness',idata: '1 cr',iprice: '0',iqty: '1000',itotal: '0'),
+  Items_Modal(iid: '101',iname: 'Happiness',idata: 'fdggfgfgf',iprice: '1000',iqty: '10',itotal: '10000'),
+];
+
+
+
 class AddItems extends StatefulWidget {
   const AddItems({Key? key}) : super(key: key);
 
@@ -22,51 +30,56 @@ class _AddItemsState extends State<AddItems> {
   String qty = "1";
 
 
-  List<Items_Modal> products = [Items_Modal(iid: '101',iname: 'Happiness',idata: '1 cr',iprice: '0',iqty: '1000',itotal: '0')];
-
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      floatingActionButton: FloatingActionButton.extended(
+          label: Text("Go to Invoice",style: TextStyle(fontSize: 25),),
+          backgroundColor: Color(0xff82a2fa),
+          onPressed: () {
+
+            int sum = 0;
+            int tax = 0;
+            for(int i = 0;  i < products.length; i++) {
+             //sum = sum + int.parse(products[i].itotal);
+             int.parse(products[i].itotal);
+             print(products[i].itotal);
+              // sum = sum + int.parse( products[i].itotal );
+            }
+
+            Navigator.pushNamed(context, "invoice");
+            print(products.length);
+
+      }, ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       appBar: AppBar(backgroundColor: Colors.blueGrey.shade500,
         title: Text("Products",style: TextStyle(fontSize: 30,color: Colors.white)),),
 
-      body:  Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 15),
-              ElevatedButton(onPressed: () {
-                alertAddProduct();
+      body:  Column(
 
-              },child: Text("Add"),),
-              SizedBox(height: 15),
+        children: [
+          SizedBox(height: 15),
+          ElevatedButton(onPressed: () {
+            alertAddProduct();
+          },child: Text("Add"),),
+          SizedBox(height: 15),
 
-              // Expanded(
-              //   child: ListView.builder(
-              //     scrollDirection: Axis.vertical,
-              //     itemCount: products.length,
-              //     itemBuilder: (context, index) {
-              //     return Items(products[index],index);
-              //   },
-              //   ),
-              // ),
-              SizedBox(height: 15),
-              SizedBox(height: 15),
-              Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  itemCount: products.length,
-                  itemBuilder: (context, index) {
-                    return Item_Tile(products[index],index);
-                  },
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemBuilder: (context, index) {
+                return Items(products[index], index);
+              },
+                itemCount: products.length,
                 ),
-              ),
-
-            ],
           ),
-        ),
+
+
+        ],
       ),
 
     );
@@ -88,13 +101,13 @@ class _AddItemsState extends State<AddItems> {
                   padding: const EdgeInsets.all(10),
                   child: TextFormField(
                     onChanged: (value) {
-                    if(mounted)
-                      {
+                    // if(mounted)
+                    //   {
                         setState(() {
                           price = value;
                           //total = '${int.parse(qty)*int.parse(price)}';
                         });
-                      }
+                      // }
                     },
                     controller: pprice,
                     keyboardType: TextInputType.number,
@@ -155,6 +168,7 @@ class _AddItemsState extends State<AddItems> {
                   setState(() {
                     Items_Modal item = Items_Modal(iid: pid.text,iname: pname.text,idata: pdata.text,iprice: pprice.text,iqty: pqty.text,itotal: total);
                     products.add(item);
+                    print(products);
                     pid.text = '';
                     pname.text = '';
                     pdata.text= '';
@@ -190,7 +204,7 @@ class _AddItemsState extends State<AddItems> {
   {
     return Padding(
             padding: EdgeInsets.only(top: 8.0,left: 10,right: 10),
-            child: Container(height: 75,width:double.infinity,
+            child: Container(height: 100,width:double.infinity,
               decoration: BoxDecoration(
                 border: Border.all(color: Colors.indigo.shade700),
                 borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -202,6 +216,7 @@ class _AddItemsState extends State<AddItems> {
                   SizedBox(width: 10),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text("${im.iname}",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
                       Text("${im.idata}",style: TextStyle(fontSize: 13,color: Color(0xffB6C9FD)),),
@@ -230,62 +245,61 @@ class _AddItemsState extends State<AddItems> {
                   ),
 
 
-
                 ],
             ),
               ),),
           );
   }
 
-  Widget Item_Tile(Items_Modal im,int index)
-  {
-    return Padding(
-      padding: EdgeInsets.only(top: 8.0,left: 10,right: 10),
-      child: Container(height: 75,width:double.infinity,
-        decoration: BoxDecoration(
-            border: Border.all(color: Colors.indigo.shade700),
-            borderRadius: BorderRadius.all(Radius.circular(20))),
-        child: ExpansionTile(
-          leading: Text("${im.iid}",style: TextStyle(fontSize: 17,color: Color(0xff4474fa)),),
-          title: Row(
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("${im.iname}",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
-                  Text("${im.idata}",style: TextStyle(fontSize: 13,color: Color(0xffB6C9FD)),),
-                ],
-              ),
-              //SizedBox(width: 10),
-              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("Price",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
-                  Text("${im.iprice}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
-                ],
-              ),
-              //SizedBox(width: 10),
-              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("Qty",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
-                  Text("${im.iqty}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
-                ],
-              ),
-             //SizedBox(width: 10),
-              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text("Total",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
-                  Text("${im.itotal}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
-                ],
-              ),
-            ],
-          ),
-          trailing: Icon(Icons.more_vert_rounded),
-
-
-
-        ),),
-    );
-  }
+  // Widget Item_Tile(Items_Modal im,int index)
+  // {
+  //   return Padding(
+  //     padding: EdgeInsets.only(top: 8.0,left: 10,right: 10),
+  //     child: Container(height: 75,width:double.infinity,
+  //       decoration: BoxDecoration(
+  //           border: Border.all(color: Colors.indigo.shade700),
+  //           borderRadius: BorderRadius.all(Radius.circular(20))),
+  //       child: ExpansionTile(
+  //         leading: Text("${im.iid}",style: TextStyle(fontSize: 17,color: Color(0xff4474fa)),),
+  //         title: Row(
+  //           children: [
+  //             Column(
+  //               mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //               children: [
+  //                 Text("${im.iname}",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+  //                 Text("${im.idata}",style: TextStyle(fontSize: 13,color: Color(0xffB6C9FD)),),
+  //               ],
+  //             ),
+  //             //SizedBox(width: 10),
+  //             Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //               children: [
+  //                 Text("Price",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+  //                 Text("${im.iprice}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
+  //               ],
+  //             ),
+  //             //SizedBox(width: 10),
+  //             Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //               children: [
+  //                 Text("Qty",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+  //                 Text("${im.iqty}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
+  //               ],
+  //             ),
+  //            //SizedBox(width: 10),
+  //             Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+  //               children: [
+  //                 Text("Total",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+  //                 Text("${im.itotal}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
+  //               ],
+  //             ),
+  //           ],
+  //         ),
+  //         trailing: Icon(Icons.more_vert_rounded),
+  //
+  //
+  //
+  //       ),),
+  //   );
+  // }
 }
 
 // Items

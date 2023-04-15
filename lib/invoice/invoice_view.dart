@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:invoice_built/items/item_modal.dart';
+
+import '../items/additem.dart';
 
 class Invoice_View extends StatefulWidget {
   const Invoice_View({Key? key}) : super(key: key);
@@ -21,12 +24,10 @@ class _Invoice_ViewState extends State<Invoice_View> {
       ),
       body: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(height: 15),
-           // Divider(color: Colors.amber,thickness: 5,),
             Row(
-              // crossAxisAlignment: CrossAxisAlignment.end,
-              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Stack(
                   alignment: Alignment(-1, -1),
@@ -60,7 +61,6 @@ class _Invoice_ViewState extends State<Invoice_View> {
                                       Text("+91 99887798555",style: TextStyle(fontSize: 8,color: Colors.white),),
                                       Text("sample@gmail.com",style: TextStyle(fontSize: 8,color: Colors.white),),
 
-
                                   ],),
                                 ],
                               ),
@@ -85,13 +85,9 @@ class _Invoice_ViewState extends State<Invoice_View> {
 
                   ],
                 ),
-                // Container(width: 150, height: 30, color: green),
-                // Container(width: 200, height: 50,
-                //   decoration: BoxDecoration(color: c2,
-                //       borderRadius: BorderRadius.only(topLeft:Radius.circular(90))),),
+
               ],
             ),
-            //Divider(color: Colors.amber,thickness: 5,),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
@@ -202,9 +198,21 @@ class _Invoice_ViewState extends State<Invoice_View> {
                       ),
                     ),
                   ),
-                  Bill_Items(Colors.white70),
-                  Bill_Items(Colors.white70),
-                  Bill_Items(Colors.white60),
+
+                  Container(height: 100,
+                    child: Expanded(
+                      child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemCount: products.length,
+                        itemBuilder: (context, index) {
+                        return Bill_Items(products[index],index);
+                      },
+
+                      ),
+                    ),
+                  ),
+
+                  // Bill_Items(Colors.white60),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -461,10 +469,6 @@ class _Invoice_ViewState extends State<Invoice_View> {
                     ),
                   ],
                 ),
-                // Container(width: 150, height: 30, color: green),
-                // Container(width: 200, height: 50,
-                //   decoration: BoxDecoration(color: c2,
-                //       borderRadius: BorderRadius.only(topLeft:Radius.circular(90))),),
               ],
             ),
             SizedBox(height: 15),
@@ -474,11 +478,11 @@ class _Invoice_ViewState extends State<Invoice_View> {
     );
   }
 
-  Widget Bill_Items(Color change) {
+  Widget Bill_Items(Items_Modal im,int index) {
     return Container(
       height: 45,
       decoration:
-          BoxDecoration(color: change, borderRadius: BorderRadius.circular(8)),
+          BoxDecoration(color: Colors.white60, borderRadius: BorderRadius.circular(8)),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -487,7 +491,7 @@ class _Invoice_ViewState extends State<Invoice_View> {
               width: 26,
               alignment: Alignment.centerLeft,
               child: Text(
-                "No.",
+                "${im.iid}",
                 style: TextStyle(fontSize: 11.5),
               ),
             ),
@@ -498,11 +502,11 @@ class _Invoice_ViewState extends State<Invoice_View> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Product Name",
+                    "${im.iname}",
                     style: TextStyle(fontSize: 11.5),
                   ),
                   Text(
-                    "Product Description",
+                    "${im.idata}",
                     style: TextStyle(fontSize: 11.5, color: Colors.black38),
                   ),
                 ],
@@ -512,7 +516,7 @@ class _Invoice_ViewState extends State<Invoice_View> {
               width: 50,
               alignment: Alignment.center,
               child: Text(
-                "Price",
+                "${im.iprice}",
                 style: TextStyle(fontSize: 11.5),
               ),
             ),
@@ -520,7 +524,7 @@ class _Invoice_ViewState extends State<Invoice_View> {
               width: 45,
               alignment: Alignment.center,
               child: Text(
-                "Quantity",
+                "${im.iqty}",
                 style: TextStyle(fontSize: 11.5),
               ),
             ),
@@ -528,7 +532,7 @@ class _Invoice_ViewState extends State<Invoice_View> {
               width: 50,
               alignment: Alignment.centerRight,
               child: Text(
-                "Total",
+                "${im.itotal}",
                 style: TextStyle(fontSize: 11.5),
               ),
             ),
