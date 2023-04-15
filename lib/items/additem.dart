@@ -45,7 +45,7 @@ class _AddItemsState extends State<AddItems> {
             int tax = 0;
             for(int i = 0;  i < products.length; i++) {
              //sum = sum + int.parse(products[i].itotal);
-             int.parse(products[i].itotal);
+             //int.parse(products[i].itotal);
              print(products[i].itotal);
               // sum = sum + int.parse( products[i].itotal );
             }
