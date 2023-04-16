@@ -41,17 +41,27 @@ class _AddItemsState extends State<AddItems> {
           backgroundColor: Color(0xff82a2fa),
           onPressed: () {
 
-          //  int sum =0;
-          //  int tax = 0;
-            //for(int i = 0;  i < products.length; i++) {
-             //sum = sum + int.parse(products[i].itotal);
-             //int.parse(products[i].itotal);
-            // print(products[i].itotal);
-             // sum = sum + int.parse( products[i].itotal );
-           // }
+            //setState(() {
 
-            Navigator.pushNamed(context, "invoice");
+           double subtotal =0;
+           int tax = 8;
+           double total = 0;
+            for(int i = 0;  i < products.length; i++) {
+              setState(() {
+                subtotal = subtotal + int.parse(products[i].itotal!);
+              });
+            print(products[i].itotal);
+           }
+           setState(() {
+              total = subtotal + (subtotal*tax)/100;
+           });
+            print("$subtotal * $tax%  == $total");
+
+            List data = [subtotal,tax,total];
+
+            Navigator.pushNamed(context, "invoice",arguments: data);
             print(products.length);
+            //});
 
       }, ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

@@ -16,6 +16,9 @@ class _Invoice_ViewState extends State<Invoice_View> {
 
   @override
   Widget build(BuildContext context) {
+
+    List data = ModalRoute.of(context)!.settings.arguments as List;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey.shade500,
@@ -314,7 +317,7 @@ class _Invoice_ViewState extends State<Invoice_View> {
                                     style: TextStyle(fontSize: 9),
                                   ),
                                   Text(
-                                    "₹ 5000.00",
+                                    "₹ ${data[0]}",
                                     style: TextStyle(
                                         fontSize: 9,
                                         fontWeight: FontWeight.bold),
@@ -349,11 +352,11 @@ class _Invoice_ViewState extends State<Invoice_View> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    "Tax (10%):",
+                                    "Tax (8%):",
                                     style: TextStyle(fontSize: 9),
                                   ),
                                   Text(
-                                    "₹ 500.00",
+                                    "${data[1]} %",
                                     style: TextStyle(
                                         fontSize: 9,
                                         fontWeight: FontWeight.bold),
@@ -378,7 +381,7 @@ class _Invoice_ViewState extends State<Invoice_View> {
                                           fontSize: 11, color: Colors.white),
                                     ),
                                     Text(
-                                      "₹ 5500.00",
+                                      "₹ ${data[2]}",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 11,
