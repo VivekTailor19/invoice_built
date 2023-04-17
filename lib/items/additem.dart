@@ -400,6 +400,9 @@ class _AddItemsState extends State<AddItems> {
             ),
         ),
           ),);
+        setState(() {
+
+        });
       },);
 
     }
