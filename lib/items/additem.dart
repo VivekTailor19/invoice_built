@@ -17,19 +17,19 @@ class _AddItemsState extends State<AddItems> {
   TextEditingController pname = TextEditingController();
   TextEditingController pdata = TextEditingController();
   TextEditingController pprice = TextEditingController();
-  TextEditingController pqty = TextEditingController(text: '1');
+  TextEditingController pqty = TextEditingController();
   String total = "";
   String price = "0";
   String qty = "1";
 
-  // TextEditingController uid = TextEditingController();
-  // TextEditingController uname = TextEditingController();
-  // TextEditingController udata = TextEditingController();
-  // TextEditingController uprice = TextEditingController();
-  // TextEditingController uqty = TextEditingController(text: '1');
-  // String uptotal = "";
-  // String upprice = "0";
-  // String upqty = "";
+  TextEditingController uid = TextEditingController();
+  TextEditingController uname = TextEditingController();
+  TextEditingController udata = TextEditingController();
+  TextEditingController uprice = TextEditingController();
+  TextEditingController uqty = TextEditingController();
+  String uptotal = "";
+  String upprice = "0";
+  String upqty = "";
 
   @override
   Widget build(BuildContext context) {
@@ -97,13 +97,15 @@ class _AddItemsState extends State<AddItems> {
                 return InkWell(
                   child: Items(products[index], index),
                   onTap: () {
-                    pid = TextEditingController(text: "${products[index].iid}");
-                    pname = TextEditingController(text: "${products[index].iname}");
-                    pdata = TextEditingController(text: "${products[index].idata}");
-                    pprice = TextEditingController(text: "${products[index].iprice}");
-                    pqty = TextEditingController(text: "${products[index].iqty}");
-                    total = "";
-                    alertUpdateProduct(products[index], index);
+                    uid = TextEditingController(text: "${products[index].iid}");
+                    uname = TextEditingController(text: "${products[index].iname}");
+                    udata = TextEditingController(text: "${products[index].idata}");
+                    uprice = TextEditingController(text: "${products[index].iprice}");
+                    uqty = TextEditingController(text: "${products[index].iqty}");
+
+                    uptotal = (int.parse(upprice) * int.parse(upqty)).toString();
+
+                    alertUpdateProduct(index);
                   },
                 );
               },
@@ -148,7 +150,7 @@ class _AddItemsState extends State<AddItems> {
                         //   {
                         setState(() {
                           price = value;
-                          //total = '${int.parse(qty)*int.parse(price)}';
+                          total = '${int.parse(qty) * int.parse(price)}';
                         });
                         // }
                       },
@@ -247,7 +249,7 @@ class _AddItemsState extends State<AddItems> {
                       });
 
                       Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 2),
                         behavior: SnackBarBehavior.floating,
                         content: Text("Thanks for Adding Product in List"),
                         backgroundColor: Colors.green.shade400,
@@ -347,7 +349,7 @@ class _AddItemsState extends State<AddItems> {
     );
   }
 
-  void alertUpdateProduct(Items_Modal im, int index) // alert dialog
+  Future<void> alertUpdateProduct(int index) // alert dialog
   async{
    await showDialog(
       context: context,
@@ -360,23 +362,24 @@ class _AddItemsState extends State<AddItems> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   UpdateItem(
-                    controller: pid,
+                    controller: uid,
                   ),
                   UpdateItem(
-                      controller: pname,
+                      controller: uname,
                       kboard: TextInputType.text),
                   UpdateItem(
-                      controller: pdata,
+                      controller: udata,
                       kboard: TextInputType.text),
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: TextFormField(
                       onChanged: (value) {
                         setState(() {
-                          price = value;
+                          upprice = value;
+                          uptotal = '${int.parse(upqty) * int.parse(upprice)}';
                         });
                       },
-                      controller: pprice,
+                      controller: uprice,
                       keyboardType: TextInputType.number,
                       style: TextStyle(
                           color: Colors.blueGrey.shade800, fontSize: 20),
@@ -401,11 +404,11 @@ class _AddItemsState extends State<AddItems> {
                     child: TextFormField(
                       onChanged: (value) {
                         setState(() {
-                          qty = value;
-                          total = '${int.parse(qty) * int.parse(price)}';
+                          upqty = value;
+                          uptotal = '${int.parse(upqty) * int.parse(upprice)}';
                         });
                       },
-                      controller: pqty,
+                      controller: uqty,
                       keyboardType: TextInputType.number,
                       style: TextStyle(
                           color: Colors.blueGrey.shade800, fontSize: 20),
@@ -428,7 +431,7 @@ class _AddItemsState extends State<AddItems> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      "$total",
+                      "$uptotal",
                       style: TextStyle(
                           color: Colors.blueGrey.shade800, fontSize: 25),
                     ),
@@ -437,20 +440,27 @@ class _AddItemsState extends State<AddItems> {
                     onPressed: () {
                       setState(() {
                         products[index] = Items_Modal(
-                            iid: pid.text,
-                            iname: pname.text,
-                            idata: pdata.text,
-                            iprice: pprice.text,
-                            iqty: pqty.text,
-                            itotal: total
+                            iid: uid.text,
+                            iname: uname.text,
+                            idata: udata.text,
+                            iprice: uprice.text,
+                            iqty: uqty.text,
+                            itotal: uptotal
                         );
 
                         print(products);
 
                       });
+                      uid.clear();
+                      uname.clear();
+                      udata.clear();
+                      uprice.clear();
+                      uqty.clear();
+                      uptotal = "";
+
 
                       Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 2),
                         behavior: SnackBarBehavior.floating,
                         content: Text("Products is Updated"),
                         backgroundColor: Colors.green.shade400,

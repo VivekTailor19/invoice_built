@@ -48,6 +48,12 @@ class _Invoice_ViewState extends State<Invoice_View> {
             print(uint8List);
 
             await ImageGallerySaver.saveImage(uint8List);
+            
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text("Your Invoice is Saved in Gallery...."),
+              behavior: SnackBarBehavior.floating,
+              duration: Duration(seconds: 2),
+              backgroundColor: Colors.green.shade400,));
 
 
           },
