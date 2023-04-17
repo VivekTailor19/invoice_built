@@ -9,7 +9,7 @@ import 'items/additem.dart';
 Widget Info({TextInputType? kboard,TextEditingController? controller, String? hint})
 {
   return Padding(
-    padding: const EdgeInsets.all(10),
+    padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 10),
     child: TextFormField(
       controller: controller,
       keyboardType: kboard,
@@ -46,8 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.indigo.shade700,
-          unselectedItemColor: Colors.indigo.shade200,
+          selectedItemColor: Color(0xff3EC3A4),
+          unselectedItemColor: Color(0xffc7f2dc),
           currentIndex: i,
           type: BottomNavigationBarType.shifting,
           onTap: (value) {

@@ -4,8 +4,7 @@ import 'package:invoice_built/homescreen.dart';
 import 'item_modal.dart';
 
 
-List<Items_Modal> products = [
-  ];
+List<Items_Modal> products = [];
 
 
 
@@ -23,9 +22,21 @@ class _AddItemsState extends State<AddItems> {
   TextEditingController pdata = TextEditingController();
   TextEditingController pprice = TextEditingController();
   TextEditingController pqty = TextEditingController(text: '1');
-  String  total =  "";
+  String total =  "";
   String price = "0";
   String qty = "1";
+
+  TextEditingController uid = TextEditingController();
+  TextEditingController uname = TextEditingController();
+  TextEditingController udata = TextEditingController();
+  TextEditingController uprice = TextEditingController();
+  TextEditingController uqty = TextEditingController(text: '1');
+  String uptotal = "";
+  String upprice = "0";
+  String upqty = "";
+
+
+
 
 
 
@@ -39,7 +50,7 @@ class _AddItemsState extends State<AddItems> {
 
       floatingActionButton: FloatingActionButton.extended(
           label: Text("Go to Invoice",style: TextStyle(fontSize: 25),),
-          backgroundColor: Color(0xff82a2fa),
+          backgroundColor: Color(0xff3EC3A4),
           onPressed: () {
 
             //setState(() {
@@ -60,12 +71,14 @@ class _AddItemsState extends State<AddItems> {
               total = subtotal + (subtotal*tax)/100;
 
            });
+
             print("$subtotal * $tax%  == $total");
 
             List data = [subtotal,tax,total,length];
 
             Navigator.pushNamed(context, "invoice",arguments: data);
             print(products.length);
+
             //});
 
       }, ),
@@ -87,7 +100,13 @@ class _AddItemsState extends State<AddItems> {
             child: ListView.builder(
               scrollDirection: Axis.vertical,
               itemBuilder: (context, index) {
-                return Items(products[index], index);
+                return InkWell(
+                    child: Items(products[index], index),
+                    onTap: () {
+                      alertUpdateProduct(products[index],index);
+                    },
+
+                );
               },
                 itemCount: products.length,
                 ),
@@ -113,7 +132,7 @@ class _AddItemsState extends State<AddItems> {
                 Info(hint: "Product Name....",kboard: TextInputType.text,controller: pname),
                 Info(hint: "Description....",kboard: TextInputType.text,controller: pdata),
                   Padding(
-                  padding: const EdgeInsets.only(top: 8,right: 10,left: 10),
+                  padding: const EdgeInsets.only(right: 10,left: 10),
                   child: TextFormField(
                     onChanged: (value) {
                     // if(mounted)
@@ -168,18 +187,17 @@ class _AddItemsState extends State<AddItems> {
                     ),
                   ),
                 ),
-                // Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //   children: [
-                //     Container(width: 115,child: Info(hint: "Price...",kboard: TextInputType.number,controller: pprice)),
-                //     Container(width: 115,child: Info(hint: "Qty...",kboard: TextInputType.number,controller: pqty))
-                //   ],),
+
+              SizedBox(height: 5),
                 Container(
                     width:150,height: 30,
                     alignment: Alignment.center,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),border: Border.all(color: Colors.indigo.shade200)),
-                    child: Text("$total",style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),)),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),
+                    //    border: Border.all(color: Colors.indigo.shade200)
+                    ),
+                    child: Text("$total",style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 25),)),
 
-                SizedBox(height: 15),
+                SizedBox(height: 5),
 
                 ElevatedButton(onPressed: () {
 
@@ -222,53 +240,187 @@ class _AddItemsState extends State<AddItems> {
   Widget Items(Items_Modal im,int index)
   {
     return Padding(
-            padding: EdgeInsets.only(top: 8.0,left: 10,right: 10),
-            child: Container(height: 100,width:double.infinity,
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.indigo.shade700),
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: Row(
+      padding: EdgeInsets.only(top: 8.0,left: 10,right: 10),
+      child: Container(height: 100,width:double.infinity,
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.indigo.shade700),
+            borderRadius: BorderRadius.all(Radius.circular(20))),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Row(
+            children: [
+              Text("${im.iid}",style: TextStyle(fontSize: 17,color: Color(0xff4474fa)),),
+              SizedBox(width: 10),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("${im.iid}",style: TextStyle(fontSize: 17,color: Color(0xff4474fa)),),
-                  SizedBox(width: 10),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text("${im.iname}",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
-                      Text("${im.idata}",style: TextStyle(fontSize: 13,color: Color(0xffB6C9FD)),),
-                    ],
+                  Text("${im.iname}",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+                  Text("${im.idata}",style: TextStyle(fontSize: 13,color: Color(0xffB6C9FD)),),
+                ],
+              ),
+              Spacer(),
+              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text("Price",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+                  Text("${im.iprice}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
+                ],
+              ),
+              SizedBox(width: 15),
+              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text("Qty",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+                  Text("${im.iqty}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
+                ],
+              ),
+              SizedBox(width: 20),
+              Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text("Total",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
+                  Text("${im.itotal}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
+                ],
+              ),
+
+
+            ],
+          ),
+        ),),
+    );
+  }
+
+
+
+
+  void alertUpdateProduct(Items_Modal im,int index)        // alert dialog
+  {
+       showDialog(context: context, builder: (context) {
+        return AlertDialog(
+          title: Text("Product"),
+          content: StatefulBuilder(
+            builder: (context, setState) => SingleChildScrollView(
+              child: Column(mainAxisSize: MainAxisSize.min,
+                children: [
+                  UpdateItem(controller: uid,preinput: "${products[index].iid}",),
+                  UpdateItem(controller: uname,preinput: "${products[index].iname}",kboard: TextInputType.text),
+                  UpdateItem(controller: udata,preinput: "${products[index].idata}",kboard: TextInputType.text),
+
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: TextFormField(
+
+                      onChanged:(value) {
+                        setState(() {
+                          price = value;
+                        });
+
+                      },
+
+                      controller: TextEditingController(text: "${products[index].iprice}"),
+                      keyboardType: TextInputType.number,
+                      style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
+                      scrollPhysics: BouncingScrollPhysics(),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        enabled: true,
+                        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade200)),
+                        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade700)),
+
+
+                      ),
+                    ),
                   ),
-                  Spacer(),
-                  Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("Price",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
-                      Text("${im.iprice}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: TextFormField(
+
+                      onChanged: (value) {
+                        setState(() {
+                          qty = value;
+                          total = '${int.parse(qty)*int.parse(price)}';
+                        });
+                      },
+
+                      controller: TextEditingController(text: "${products[index].iqty}"),
+                      keyboardType: TextInputType.number,
+                      style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
+                      scrollPhysics: BouncingScrollPhysics(),
+                      decoration: InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        enabled: true,
+                        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade200)),
+                        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade700)),
+
+
+                      ),
+                    ),
                   ),
-                  SizedBox(width: 15),
-                  Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("Qty",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
-                      Text("${im.iqty}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
-                    ],
-                  ),
-                  SizedBox(width: 20),
-                  Column(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text("Total",style: TextStyle(fontSize: 15,color: Color(0xff4474fa)),),
-                      Text("${im.itotal}",style: TextStyle(fontSize: 12,color: Color(0xff2a62f9)),),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text("$total",style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 25),),
                   ),
 
+
+                  ElevatedButton(
+                    onPressed: () {
+
+                    setState(() {
+
+
+                      products[index] = Items_Modal(iid: uid.text,iname: uname.text,idata: pdata.text,iprice: pprice.text,iqty: pqty.text,itotal: total);
+
+                     print(products);
+                    // pid.text = '';
+                    // pname.text = '';
+                    // pdata.text= '';
+                    // pprice.text = '';
+                    // pqty.text = '';
+                    // total = '';
+
+                    });
+
+                     Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text("Products is Updated"),backgroundColor: Colors.green.shade400,));
+
+                     },child: Text("Update"),),
 
                 ],
             ),
-              ),),
-          );
+        ),
+          ),);
+      },);
+
+    }
+
+  Widget UpdateItem({TextEditingController? controller,TextInputType? kboard,String? preinput})
+  {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: TextFormField(
+
+            controller: controller = TextEditingController(text: "$preinput"),
+            keyboardType: kboard,
+            style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
+            scrollPhysics: BouncingScrollPhysics(),
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white,
+              enabled: true,
+              enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade200)),
+              focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(color: Colors.indigo.shade700)),
+
+
+            ),
+          ),
+        ),
+      ],
+    );
   }
+
+
 
   // Widget Item_Tile(Items_Modal im,int index)
   // {

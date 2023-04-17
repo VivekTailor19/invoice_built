@@ -25,6 +25,13 @@ class _Invoice_ViewState extends State<Invoice_View> {
       appBar: AppBar(
         title: Text("Invoice",
             style: TextStyle(fontSize: 30, color: Colors.white)),
+        actions: [
+          IconButton(icon: Icon(Icons.download),iconSize: 30,
+          onPressed: () {
+
+          },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -206,7 +213,7 @@ class _Invoice_ViewState extends State<Invoice_View> {
                   Container(height: data[3],
                     child: Expanded(
                       child: ListView.builder(
-                        scrollDirection: Axis.vertical,
+
                         itemCount: products.length,
                         itemBuilder: (context, index) {
                         return Bill_Items(products[index],index);

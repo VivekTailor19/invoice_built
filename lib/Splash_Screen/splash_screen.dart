@@ -23,9 +23,9 @@ class _SplashState extends State<Splash> {
           child: Column(
             children: [
               SizedBox(height: 150),
-              Image.asset("assets/images/invoice (2).png",height: 160,width: 160,fit: BoxFit.fill,),
+              Image.asset("assets/images/checklist.png",height: 160,width: 160,fit: BoxFit.fill,),
               SizedBox(height: 55),
-              LinearProgressIndicator(color: Color(0xffB6C9FD),backgroundColor: Color(0xffE5EDFC),)
+              LinearProgressIndicator(color: Color(0xff3EC3A4),backgroundColor: Color(0xff6FD7A3),)
             ],
           ),
         ),
