@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:invoice_built/items/item_modal.dart';
 
+import '../business/business.dart';
+import '../client/client.dart';
 import '../items/additem.dart';
 
 class Invoice_View extends StatefulWidget {
@@ -21,7 +23,6 @@ class _Invoice_ViewState extends State<Invoice_View> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey.shade500,
         title: Text("Invoice",
             style: TextStyle(fontSize: 30, color: Colors.white)),
       ),
@@ -61,8 +62,8 @@ class _Invoice_ViewState extends State<Invoice_View> {
                                     children: [
                                       Text("0123456",style: TextStyle(fontSize: 8,color: Colors.white),),
                                       Text("April 05, 2092",style: TextStyle(fontSize: 8,color: Colors.white),),
-                                      Text("+91 99887798555",style: TextStyle(fontSize: 8,color: Colors.white),),
-                                      Text("sample@gmail.com",style: TextStyle(fontSize: 8,color: Colors.white),),
+                                      Text("+91 ${bd.bphone}",style: TextStyle(fontSize: 8,color: Colors.white),),
+                                      Text("${bd.bemail}",style: TextStyle(fontSize: 8,color: Colors.white),),
 
                                   ],),
                                 ],
@@ -106,19 +107,19 @@ class _Invoice_ViewState extends State<Invoice_View> {
                           style: TextStyle(color: green),
                         ),
                         Text(
-                          "Client Name.",
+                          "${cd.cname}",
                           style: TextStyle(fontSize: 20, color: c2),
                         ),
                         Text(
-                          "Address",
+                          "${cd.caddress}",
                           style: TextStyle(fontSize: 13),
                         ),
                         Text(
-                          "Phone Number",
+                          "${cd.cphone}",
                           style: TextStyle(fontSize: 13),
                         ),
                         Text(
-                          "Email Id",
+                          "${cd.cemail}",
                           style: TextStyle(fontSize: 13),
                         )
                       ],
@@ -202,7 +203,7 @@ class _Invoice_ViewState extends State<Invoice_View> {
                     ),
                   ),
 
-                  Container(height: 100,
+                  Container(height: data[3],
                     child: Expanded(
                       child: ListView.builder(
                         scrollDirection: Axis.vertical,
@@ -280,13 +281,13 @@ class _Invoice_ViewState extends State<Invoice_View> {
                                                   fontSize: 9),
                                             ),
                                             Text(
-                                              "Jhone Doe.",
+                                              "${cd.cname}",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 9),
                                             ),
                                             Text(
-                                              "XYZ",
+                                              "Universal.IO",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: 9),
@@ -433,12 +434,12 @@ class _Invoice_ViewState extends State<Invoice_View> {
                             ),
                             Divider(color: Colors.black26),
                             Text(
-                              "Your Name & Signature",
+                              "${bd.bname}",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 11),
                             ),
                             Text(
-                              "Account Manager",
+                              "${bd.bwebsite}",
                               style: TextStyle(fontSize: 9),
                             )
                           ],

@@ -5,9 +5,7 @@ import 'item_modal.dart';
 
 
 List<Items_Modal> products = [
-  Items_Modal(iid: '101',iname: 'Happiness',idata: '1 cr',iprice: '0',iqty: '1000',itotal: '0'),
-  Items_Modal(iid: '101',iname: 'Happiness',idata: 'fdggfgfgf',iprice: '1000',iqty: '10',itotal: '10000'),
-];
+  ];
 
 
 
@@ -34,6 +32,9 @@ class _AddItemsState extends State<AddItems> {
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return Scaffold(
 
       floatingActionButton: FloatingActionButton.extended(
@@ -46,18 +47,22 @@ class _AddItemsState extends State<AddItems> {
            double subtotal =0;
            int tax = 8;
            double total = 0;
+           double length = 1;
+
             for(int i = 0;  i < products.length; i++) {
               setState(() {
                 subtotal = subtotal + int.parse(products[i].itotal!);
+                length = products.length * 50;
               });
             print(products[i].itotal);
            }
            setState(() {
               total = subtotal + (subtotal*tax)/100;
+
            });
             print("$subtotal * $tax%  == $total");
 
-            List data = [subtotal,tax,total];
+            List data = [subtotal,tax,total,length];
 
             Navigator.pushNamed(context, "invoice",arguments: data);
             print(products.length);
@@ -65,8 +70,8 @@ class _AddItemsState extends State<AddItems> {
 
       }, ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
-      appBar: AppBar(backgroundColor: Colors.blueGrey.shade500,
+     // floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
+      appBar: AppBar(
         title: Text("Products",style: TextStyle(fontSize: 30,color: Colors.white)),),
 
       body:  Column(
@@ -108,7 +113,7 @@ class _AddItemsState extends State<AddItems> {
                 Info(hint: "Product Name....",kboard: TextInputType.text,controller: pname),
                 Info(hint: "Description....",kboard: TextInputType.text,controller: pdata),
                   Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.only(top: 8,right: 10,left: 10),
                   child: TextFormField(
                     onChanged: (value) {
                     // if(mounted)
@@ -137,7 +142,7 @@ class _AddItemsState extends State<AddItems> {
                   ),
                 ),
                   Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.only(top: 8,right: 10,left: 10),
                   child: TextFormField(
                     onChanged: (value) {
                       setState(() {
@@ -168,7 +173,11 @@ class _AddItemsState extends State<AddItems> {
                 //     Container(width: 115,child: Info(hint: "Price...",kboard: TextInputType.number,controller: pprice)),
                 //     Container(width: 115,child: Info(hint: "Qty...",kboard: TextInputType.number,controller: pqty))
                 //   ],),
-                Text("$total",style: TextStyle(color: Colors.red,fontSize: 20),),
+                Container(
+                    width:150,height: 30,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(20)),border: Border.all(color: Colors.indigo.shade200)),
+                    child: Text("$total",style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),)),
 
                 SizedBox(height: 15),
 

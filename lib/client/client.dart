@@ -24,7 +24,7 @@ class _ClientsState extends State<Clients> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.blueGrey.shade500,
+      appBar: AppBar(
         title: Text("Client Info",style: TextStyle(fontSize: 30,color: Colors.white)),),
 
       body: SingleChildScrollView(

@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
             BottomNavigationBarItem(icon: Icon(Icons.local_convenience_store_rounded),label: "",),
             BottomNavigationBarItem(icon: Icon(Icons.person_outline_rounded),label: "",),
             BottomNavigationBarItem(icon: Icon(Icons.local_mall_rounded),label: "",),
-            BottomNavigationBarItem(icon: Icon(Icons.receipt_long_rounded),label: "",),
+            //BottomNavigationBarItem(icon: Icon(Icons.receipt_long_rounded),label: "",),
           ],
 
         ),
@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Business(),
             Clients(),
             AddItems(),
-            Invoice_View(),
+            //Invoice_View(),
           ],
         ),
       ),

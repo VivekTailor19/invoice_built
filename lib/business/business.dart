@@ -25,7 +25,7 @@ class _BusinessState extends State<Business> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.blueGrey.shade500,
+      appBar: AppBar(
         title: Text("Business Page",style: TextStyle(fontSize: 30,color: Colors.white)),),
       body: SingleChildScrollView(
         child: Column(

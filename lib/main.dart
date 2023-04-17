@@ -12,10 +12,11 @@ void main() {
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
       appBarTheme: AppBarTheme(
-        backgroundColor: Colors.blueGrey.shade700,
+        backgroundColor:Color(0xff292931),
+        //Colors.blueGrey.shade700,
         titleTextStyle: TextStyle(fontSize: 30,color: Colors.white,),
         elevation: 10,
-        shadowColor: Colors.blueGrey.shade400,
+        //shadowColor: Colors.blueGrey.shade400,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(backgroundColor: Color(0xff82a2fa),shadowColor: Color(0xffB6C9FD),textStyle: TextStyle(fontSize: 25,color: Colors.white),alignment: Alignment.center,elevation: 8))
     ),
