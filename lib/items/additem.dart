@@ -384,6 +384,17 @@ class _AddItemsState extends State<AddItems> {
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text("Products is Updated"),backgroundColor: Colors.green.shade400,));
 
                      },child: Text("Update"),),
+                  ElevatedButton(
+                    onPressed: () {
+
+                      setState(() {
+                        products.removeAt(index);
+                      });
+
+                      Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text("Product List is Updated"),backgroundColor: Colors.green.shade400,));
+
+                    },child: Text("Delete"),),
 
                 ],
             ),
