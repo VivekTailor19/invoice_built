@@ -162,7 +162,7 @@ class _AddItemsState extends State<AddItems> {
                       decoration: InputDecoration(
                         labelText: "Price",
 
-                        labelStyle: TextStyle(fontSize: 20,color: Color(0xff292931),wordSpacing: 3),
+                        labelStyle: TextStyle(fontSize: 20,color: Color(0xaa292931),wordSpacing: 3),
 
                         filled: true,
                         fillColor: Colors.white,

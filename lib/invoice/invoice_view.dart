@@ -174,7 +174,7 @@ class _Invoice_ViewState extends State<Invoice_View> {
                             ),
                             SizedBox(height: 5),
                             Text(
-                              "I hope you are well.Please see attached the invoice [number] for [completed project].The invoice is due by [date].Please don't hesitate to get in touch if you have any questions or need clarifications.",
+                              "I hope you are well.Please see attached the invoice 0123456 for completed project.The invoice is due by  April 05, 2092.Please don't hesitate to get in touch if you have any questions or need clarifications.",
                               style: TextStyle(fontSize: 10),
                               textAlign: TextAlign.justify,
                             )

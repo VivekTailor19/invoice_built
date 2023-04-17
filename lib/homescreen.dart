@@ -18,7 +18,7 @@ Widget Info({TextInputType? kboard,TextEditingController? controller, String? hi
       decoration: InputDecoration(
         //label: Text("$hint"),
         labelText: "$hint",
-        labelStyle: TextStyle(fontSize: 20,color: Color(0xff292931),wordSpacing: 3),
+        labelStyle: TextStyle(fontSize: 20,color: Color(0xaa292931),wordSpacing: 3),
         // hintText: "$hint",
         // hintStyle: TextStyle(fontSize: 20,color: Colors.blueGrey.shade100,wordSpacing: 3),
         filled: true,
@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
         bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: Colors.indigo,
           unselectedItemColor: Color(0x33292931),
