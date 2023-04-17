@@ -32,11 +32,11 @@ class _ClientsState extends State<Clients> {
           children: [
             SizedBox(height: 15),
 
-            Info(hint: "Enter Client Unique Id....",kboard: TextInputType.number,controller: cid),
-            Info(hint: "Enter Client Name....",kboard: TextInputType.text,controller: cname),
-            Info(hint: "Enter Proper Address....",kboard: TextInputType.streetAddress,controller: caddress),
-            Info(hint: "Enter 10 digit contact number....",kboard: TextInputType.number,controller: cphone),
-            Info(hint: "Enter proper email id....",kboard: TextInputType.emailAddress,controller: cemail),
+            Info(hint: "Client Unique Id",kboard: TextInputType.number,controller: cid),
+            Info(hint: "Client Name....",kboard: TextInputType.text,controller: cname),
+            Info(hint: "Address....",kboard: TextInputType.streetAddress,controller: caddress),
+            Info(hint: "Contact number....",kboard: TextInputType.number,controller: cphone),
+            Info(hint: "Email id....",kboard: TextInputType.emailAddress,controller: cemail),
 
             SizedBox(height: 15),
             ElevatedButton(onPressed: () {

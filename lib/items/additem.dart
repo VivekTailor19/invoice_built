@@ -160,11 +160,10 @@ class _AddItemsState extends State<AddItems> {
                           color: Colors.blueGrey.shade800, fontSize: 20),
                       scrollPhysics: BouncingScrollPhysics(),
                       decoration: InputDecoration(
-                        hintText: "Price.....",
-                        hintStyle: TextStyle(
-                            fontSize: 20,
-                            color: Colors.blueGrey.shade100,
-                            wordSpacing: 3),
+                        labelText: "Price",
+
+                        labelStyle: TextStyle(fontSize: 20,color: Color(0xff292931),wordSpacing: 3),
+
                         filled: true,
                         fillColor: Colors.white,
                         enabled: true,
@@ -194,11 +193,8 @@ class _AddItemsState extends State<AddItems> {
                           color: Colors.blueGrey.shade800, fontSize: 20),
                       scrollPhysics: BouncingScrollPhysics(),
                       decoration: InputDecoration(
-                        hintText: "QTY.....",
-                        hintStyle: TextStyle(
-                            fontSize: 20,
-                            color: Colors.blueGrey.shade100,
-                            wordSpacing: 3),
+                        labelText: "QTY",
+                        labelStyle: TextStyle(fontSize: 20,color: Color(0xaa292931),wordSpacing: 3),
                         filled: true,
                         fillColor: Colors.white,
                         enabled: true,

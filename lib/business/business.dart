@@ -33,11 +33,11 @@ class _BusinessState extends State<Business> {
             SizedBox(height: 15),
 
 
-            Info(hint: "Enter Owner Name....",kboard: TextInputType.text,controller: bname),
-            Info(hint: "Enter Proper Address....",kboard: TextInputType.streetAddress,controller: baddress),
-            Info(hint: "Enter 10 digit contact number....",kboard: TextInputType.number,controller: bphone),
-            Info(hint: "Enter proper email id....",kboard: TextInputType.emailAddress,controller: bemail),
-            Info(hint: "Enter website....",kboard: TextInputType.url,controller: bwebsite),
+            Info(hint: "Owner Name",kboard: TextInputType.text,controller: bname),
+            Info(hint: "Address",kboard: TextInputType.streetAddress,controller: baddress),
+            Info(hint: "Contact number",kboard: TextInputType.number,controller: bphone),
+            Info(hint: "Email id",kboard: TextInputType.emailAddress,controller: bemail),
+            Info(hint: "Website",kboard: TextInputType.url,controller: bwebsite),
             SizedBox(height: 15),
             ElevatedButton(onPressed: () {
 
