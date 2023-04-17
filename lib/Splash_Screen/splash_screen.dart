@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
 
@@ -22,10 +23,14 @@ class _SplashState extends State<Splash> {
         body: Center(
           child: Column(
             children: [
-              SizedBox(height: 150),
-              Image.asset("assets/images/checklist.png",height: 160,width: 160,fit: BoxFit.fill,),
+              SizedBox(height: 160),
+              Image.asset("assets/images/receipt.png",height: 200,width: 200,fit: BoxFit.fill,),
               SizedBox(height: 55),
-              LinearProgressIndicator(color: Color(0xff3EC3A4),backgroundColor: Color(0xff6FD7A3),)
+
+
+              SizedBox(height: 20,),
+
+              LinearProgressIndicator(color: Colors.indigo,backgroundColor: Colors.indigo.shade50,)
             ],
           ),
         ),

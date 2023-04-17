@@ -45,8 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Color(0xff3EC3A4),
-          unselectedItemColor: Color(0xffc7f2dc),
+          selectedItemColor: Colors.indigo,
+          unselectedItemColor: Color(0x33292931),
           currentIndex: i,
           type: BottomNavigationBarType.shifting,
           onTap: (value) {
@@ -54,9 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
               i=value;
             });},
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.local_convenience_store_rounded),label: "",),
-            BottomNavigationBarItem(icon: Icon(Icons.person_outline_rounded),label: "",),
-            BottomNavigationBarItem(icon: Icon(Icons.local_mall_rounded),label: "",),
+            BottomNavigationBarItem(icon: Icon(Icons.local_convenience_store_rounded,size: 25,),label: "",),
+            BottomNavigationBarItem(icon: Icon(Icons.person_outline_rounded,size: 25,),label: "",),
+            BottomNavigationBarItem(icon: Icon(Icons.local_mall_rounded,size: 25,),label: "",),
             //BottomNavigationBarItem(icon: Icon(Icons.receipt_long_rounded),label: "",),
           ],
 

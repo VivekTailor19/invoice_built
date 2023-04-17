@@ -46,7 +46,8 @@ class _BusinessState extends State<Business> {
 
               ScaffoldMessenger.of(context)!.showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text("Your Information is Collected"),backgroundColor: Colors.green.shade400,));
 
-            },child: Text("Create"),),
+            },
+              child: Text("Create"),),
 
           ],
         ),

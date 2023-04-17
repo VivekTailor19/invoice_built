@@ -18,7 +18,7 @@ void main() {
         elevation: 10,
         //shadowColor: Colors.blueGrey.shade400,
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(backgroundColor: Color(0xff3EC3A4),shadowColor: Color(0xffB6C9FD),textStyle: TextStyle(fontSize: 25,color: Colors.white),alignment: Alignment.center,elevation: 8))
+      elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(backgroundColor: Colors.indigo.shade400,shadowColor: Color(0xffB6C9FD),textStyle: TextStyle(fontSize: 25,color:Colors.amber),alignment: Alignment.center,elevation: 8,))
     ),
     routes: {
       "/": (context) => Splash(),
