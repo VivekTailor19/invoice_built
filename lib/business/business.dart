@@ -26,7 +26,7 @@ class _BusinessState extends State<Business> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Business Page",style: TextStyle(fontSize: 30,color: Colors.white)),),
+        title: Text("Business Page",style: TextStyle()),),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -47,7 +47,7 @@ class _BusinessState extends State<Business> {
               ScaffoldMessenger.of(context)!.showSnackBar(SnackBar(behavior:SnackBarBehavior.floating,content: Text("Your Information is Collected"),backgroundColor: Colors.green.shade400,));
 
             },
-              child: Text("Create"),),
+              child: Text("Create",style: TextStyle(color: Color(0xffBFDB38)),),),
 
           ],
         ),

@@ -37,9 +37,11 @@ class _AddItemsState extends State<AddItems> {
       floatingActionButton: FloatingActionButton.extended(
         label: Text(
           "Go to Invoice",
-          style: TextStyle(fontSize: 25),
+          style: TextStyle(fontSize: 25,color: Colors.greenAccent.shade400
+          //Color(0xffBFDB38)
+          ),
         ),
-        backgroundColor: Colors.indigo.shade900,
+        backgroundColor: Color(0xff292931),
         onPressed: () {
           //setState(() {
 
@@ -73,8 +75,7 @@ class _AddItemsState extends State<AddItems> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       // floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       appBar: AppBar(
-        title: Text("Products",
-            style: TextStyle(fontSize: 30, color: Colors.white)),
+        title: Text("Products"),
       ),
 
       body: Column(
@@ -87,7 +88,7 @@ class _AddItemsState extends State<AddItems> {
                     setState(() {});
                   });
             },
-            child: Text("Add"),
+            child: Text("Add",style: TextStyle(color: Color(0xffBFDB38)),),
           ),
           SizedBox(height: 15),
           Expanded(
@@ -142,70 +143,74 @@ class _AddItemsState extends State<AddItems> {
                       hint: "Description....",
                       kboard: TextInputType.text,
                       controller: pdata),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 10, left: 10),
-                    child: TextFormField(
-                      onChanged: (value) {
-                        // if(mounted)
-                        //   {
-                        setState(() {
-                          price = value;
-                          total = '${int.parse(qty) * int.parse(price)}';
-                        });
-                        // }
-                      },
-                      controller: pprice,
-                      keyboardType: TextInputType.number,
-                      style: TextStyle(
-                          color: Colors.blueGrey.shade800, fontSize: 20),
-                      scrollPhysics: BouncingScrollPhysics(),
-                      decoration: InputDecoration(
-                        labelText: "Price",
+                  SizedBox(height: 55,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 10, left: 10),
+                      child: TextFormField(
+                        onChanged: (value) {
+                          // if(mounted)
+                          //   {
+                          setState(() {
+                            price = value;
+                            total = '${int.parse(qty) * int.parse(price)}';
+                          });
+                          // }
+                        },
+                        controller: pprice,
+                        keyboardType: TextInputType.number,
+                        style: TextStyle(
+                            color: Colors.blueGrey.shade800, fontSize: 20),
+                        scrollPhysics: BouncingScrollPhysics(),
+                        decoration: InputDecoration(
+                          labelText: "Price",
 
-                        labelStyle: TextStyle(fontSize: 20,color: Color(0xaa292931),wordSpacing: 3),
+                          labelStyle: TextStyle(fontSize: 18,color: Color(0xaa292931),wordSpacing: 3),
 
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabled: true,
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide:
-                                BorderSide(color: Colors.indigo.shade200)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide:
-                                BorderSide(color: Colors.indigo.shade700)),
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              borderSide:
+                                  BorderSide(width:1.5,color: Color(0x9900425A))),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              borderSide:
+                                  BorderSide(width:2,color: Color(0xff00425A))),
+                        ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8, right: 10, left: 10),
-                    child: TextFormField(
-                      onChanged: (value) {
-                        setState(() {
-                          qty = value;
-                          total = '${int.parse(qty) * int.parse(price)}';
-                        });
-                      },
-                      controller: pqty,
-                      keyboardType: TextInputType.number,
-                      style: TextStyle(
-                          color: Colors.blueGrey.shade800, fontSize: 20),
-                      scrollPhysics: BouncingScrollPhysics(),
-                      decoration: InputDecoration(
-                        labelText: "QTY",
-                        labelStyle: TextStyle(fontSize: 20,color: Color(0xaa292931),wordSpacing: 3),
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabled: true,
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide:
-                                BorderSide(color: Colors.indigo.shade200)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide:
-                                BorderSide(color: Colors.indigo.shade700)),
+                  SizedBox(height: 55,
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 8, right: 10, left: 10),
+                      child: TextFormField(
+                        onChanged: (value) {
+                          setState(() {
+                            qty = value;
+                            total = '${int.parse(qty) * int.parse(price)}';
+                          });
+                        },
+                        controller: pqty,
+                        keyboardType: TextInputType.number,
+                        style: TextStyle(
+                            color: Colors.blueGrey.shade800, fontSize: 20),
+                        scrollPhysics: BouncingScrollPhysics(),
+                        decoration: InputDecoration(
+                          labelText: "QTY",
+                          labelStyle: TextStyle(fontSize: 18,color: Color(0xaa292931),wordSpacing: 3),
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              borderSide:
+                                  BorderSide(width:1.5,color: Color(0x9900425A))),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              borderSide:
+                                  BorderSide(width:2,color: Color(0xff00425A))),
+                        ),
                       ),
                     ),
                   ),
@@ -251,7 +256,7 @@ class _AddItemsState extends State<AddItems> {
                         backgroundColor: Colors.green.shade400,
                       ));
                     },
-                    child: Text("Add"),
+                    child: Text("Add",style: TextStyle(color: Color(0xffBFDB38)),),
                   ),
                   SizedBox(height: 15),
                 ],
@@ -366,61 +371,65 @@ class _AddItemsState extends State<AddItems> {
                   UpdateItem(
                       controller: udata,
                       kboard: TextInputType.text),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: TextFormField(
-                      onChanged: (value) {
-                        setState(() {
-                          upprice = value;
-                          uptotal = '${int.parse(upqty) * int.parse(upprice)}';
-                        });
-                      },
-                      controller: uprice,
-                      keyboardType: TextInputType.number,
-                      style: TextStyle(
-                          color: Colors.blueGrey.shade800, fontSize: 20),
-                      scrollPhysics: BouncingScrollPhysics(),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabled: true,
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide:
-                                BorderSide(color: Colors.indigo.shade200)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide:
-                                BorderSide(color: Colors.indigo.shade700)),
+                  SizedBox(height: 55,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: TextFormField(
+                        onChanged: (value) {
+                          setState(() {
+                            upprice = value;
+                            uptotal = '${int.parse(upqty) * int.parse(upprice)}';
+                          });
+                        },
+                        controller: uprice,
+                        keyboardType: TextInputType.number,
+                        style: TextStyle(
+                            color: Colors.blueGrey.shade800, fontSize: 20),
+                        scrollPhysics: BouncingScrollPhysics(),
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              borderSide:
+                                  BorderSide(width: 1.5,color: Colors.indigo.shade200)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              borderSide:
+                                  BorderSide(width:2,color: Colors.indigo.shade700)),
+                        ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: TextFormField(
-                      onChanged: (value) {
-                        setState(() {
-                          upqty = value;
-                          uptotal = '${int.parse(upqty) * int.parse(upprice)}';
-                        });
-                      },
-                      controller: uqty,
-                      keyboardType: TextInputType.number,
-                      style: TextStyle(
-                          color: Colors.blueGrey.shade800, fontSize: 20),
-                      scrollPhysics: BouncingScrollPhysics(),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabled: true,
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide:
-                                BorderSide(color: Colors.indigo.shade200)),
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide:
-                                BorderSide(color: Colors.indigo.shade700)),
+                  SizedBox(height: 55,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: TextFormField(
+                        onChanged: (value) {
+                          setState(() {
+                            upqty = value;
+                            uptotal = '${int.parse(upqty) * int.parse(upprice)}';
+                          });
+                        },
+                        controller: uqty,
+                        keyboardType: TextInputType.number,
+                        style: TextStyle(
+                            color: Colors.blueGrey.shade800, fontSize: 20),
+                        scrollPhysics: BouncingScrollPhysics(),
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          enabled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              borderSide:
+                                  BorderSide(color: Colors.indigo.shade200)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              borderSide:
+                                  BorderSide(color: Colors.indigo.shade700)),
+                        ),
                       ),
                     ),
                   ),
@@ -462,7 +471,7 @@ class _AddItemsState extends State<AddItems> {
                         backgroundColor: Colors.green.shade400,
                       ));
                     },
-                    child: Text("Update"),
+                    child: Text("Update",style: TextStyle(color: Color(0xffBFDB38)),),
                   ),
                   SizedBox(height: 10),
                   ElevatedButton(
@@ -475,7 +484,7 @@ class _AddItemsState extends State<AddItems> {
                         backgroundColor: Colors.green.shade400,
                       ));
                     },
-                    child: Text("Delete"),
+                    child: Text("Delete",style: TextStyle(color: Color(0xffBFDB38)),),
                   ),
                 ],
               ),

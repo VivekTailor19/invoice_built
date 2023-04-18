@@ -9,24 +9,27 @@ import 'items/additem.dart';
 Widget Info({TextInputType? kboard,TextEditingController? controller, String? hint})
 {
   return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 10),
-    child: TextFormField(
-      controller: controller,
-      keyboardType: kboard,
-      style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
-      scrollPhysics: BouncingScrollPhysics(),
-      decoration: InputDecoration(
-        //label: Text("$hint"),
-        labelText: "$hint",
-        labelStyle: TextStyle(fontSize: 20,color: Color(0xaa292931),wordSpacing: 3),
-        // hintText: "$hint",
-        // hintStyle: TextStyle(fontSize: 20,color: Colors.blueGrey.shade100,wordSpacing: 3),
-        filled: true,
-        fillColor: Colors.white,
-        enabled: true,
-        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(width:1.5,color: Colors.indigo.shade200)),
-        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(20)),borderSide: BorderSide(width: 2,color: Colors.indigo.shade700)),
+    padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+    child: SizedBox(height: 55,
+      child: TextFormField(
 
+        controller: controller,
+        keyboardType: kboard,
+        style: TextStyle(color: Colors.blueGrey.shade800,fontSize: 20),
+        scrollPhysics: BouncingScrollPhysics(),
+        decoration: InputDecoration(
+          //label: Text("$hint"),
+          labelText: "$hint",
+          labelStyle: TextStyle(fontSize: 18,color: Color(0xaa292931),wordSpacing: 3),
+          // hintText: "$hint",
+          // hintStyle: TextStyle(fontSize: 20,color: Colors.blueGrey.shade100,wordSpacing: 3),
+          filled: true,
+          fillColor: Colors.white,
+          enabled: true,
+          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(15)),borderSide: BorderSide(width:1.5,color: Color(0x9900425A))),
+          focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(15)),borderSide: BorderSide(width: 2,color: Color(0xff00425A))),
+
+        ),
       ),
     ),
   );
@@ -49,8 +52,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
 
         bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.indigo,
-          unselectedItemColor: Color(0x33292931),
+          selectedItemColor: Color(0xffFC7300),
+          unselectedItemColor: Color(0x22292931),
           currentIndex: i,
           type: BottomNavigationBarType.shifting,
           onTap: (value) {

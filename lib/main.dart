@@ -11,14 +11,16 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     theme: ThemeData(
+
       appBarTheme: AppBarTheme(
         backgroundColor:Color(0xff292931),
-        //Colors.blueGrey.shade700,
-        titleTextStyle: TextStyle(fontSize: 30,color: Colors.white,),
+        titleTextStyle: TextStyle(fontSize: 25,color: Color(0xffBFDB38),),
         elevation: 10,
-        //shadowColor: Colors.blueGrey.shade400,
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(backgroundColor: Colors.indigo.shade400,shadowColor: Color(0xffB6C9FD),textStyle: TextStyle(fontSize: 25,color:Colors.amber),alignment: Alignment.center,elevation: 8,))
+      elevatedButtonTheme: ElevatedButtonThemeData(style: ElevatedButton.styleFrom(backgroundColor: Color(0xff292931),shadowColor: Color(0xffB6C9FD),textStyle: TextStyle(fontSize: 25,color:Colors.amber),alignment: Alignment.center,elevation: 8,)),
+
+
+
     ),
     routes: {
       "/": (context) => Splash(),
